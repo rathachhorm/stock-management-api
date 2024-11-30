@@ -1,0 +1,40 @@
+spring:
+    application:
+      name: profile-management
+    profiles:
+      active: ${PROFILE_MANAGEMENT_ACTIVE_PROFILE}
+    datasource:
+      url: jdbc:postgresql://${DATABASE_HOST}:${DATABASE_PORT}/${PROFILE_MANAGEMENT_DATABASE_NAME}
+      username: ${DATABASE_USERNAME}
+      password: ${DATABASE_PASSWORD}
+    jpa:
+      show-sql: true
+      hibernate:
+        ddl-auto: ${PROFILE_JPA_HIBERNATE_DDL_AUTO}
+
+    security:
+      oauth2:
+        resource-server:
+          jwt:
+            issuer-uri: ${app.keycloak.admin.serverUrl}/realms/${app.keycloak.admin.realm}
+
+
+app:
+  keycloak:
+    admin:
+      clientId: ${KEYCLOAK_ADMIN_CLIENT_ID}
+      clientSecret: ${KEYCLOAK_ADMIN_CLIENTSECRET}
+      realm: ${KEYCLOAK_ADMIN_REALM}
+      serverUrl: ${KEYCLOAK_ADMIN_SERVER_URL}
+
+server:
+  port: ${PROFILE_MANAGEMENT_SERVER_PORT}
+
+#feign:
+#  compression:
+#    request:
+#      enabled: true
+#      mime-types: text/xml,application/xml,application/json
+#      mim-request-size: 2048
+
+

@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: relation-management-service
+  profiles:
+    active: ${RELATION_MANAGEMENT_ACTIVE_PROFILE}
+  datasource:
+    url: jdbc:postgresql://${DATABASE_HOST}:5432/${RELATION_MANAGEMENT_DATABASE_NAME}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: ${RELATION_JPA_HIBERNATE_DDL_AUTO}
+server:
+  port: ${RELATION_MANAGEMENT_SERVER_PORT}

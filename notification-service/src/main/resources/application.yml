@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: notification-service
+  profiles:
+    active: ${NOTIFICATION_MANAGEMENT_ACTIVE_PROFILE}
+  datasource:
+    url: jdbc:postgresql://${DATABASE_HOST}:5432/${NOTIFICATION_MANAGEMENT_ACTIVE_PROFILE}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: ${NOTIFICATION_JPA_HIBERNATE_DDL_AUTO}
+
+  mail:
+    host: ${MAIL_HOST}
+    port: ${MAIL_PORT}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    default-encoding: UTF-8
+
+    # Other properties
+    properties:
+      mail:
+        mime:
+          charset: UTF
+        smtp:
+          auth: ${MAIL_PROPERTIES_MAIL_SMTP_AUTH}
+          connection-timeout: ${MAIL_CONNECTION_TIME_OUT}
+          timeout: ${MAIL_TIME_OUT}
+          write-timeout: ${MAIL_WRITE_TIME_OUT}
+
+          # TLS , port 587
+          starttls:
+            enable: ${MAIL_PROPERTIES_MAIL_SMTP_START_TLS}
+
+
+server:
+  port: ${NOTIFICATION_MANAGEMENT_SERVER_PORT}
